@@ -12,10 +12,6 @@ class UPrimitiveComponent;
 class USceneComponent;
 class UStaticMeshComponent;
 
-// ESERCIZIO_BEGIN: signature
-DECLARE_DELEGATE_RetVal_OneParam(bool, FLiftMoveRequestSignature, int32);
-// ESERCIZIO_END
-
 UCLASS()
 class DELEGATESCOURSE_API ADelegateLiftConsole : public AActor
 {
@@ -55,10 +51,6 @@ protected:
 
 	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category = "Lift")
 	TObjectPtr<ADelegateLift> Lift = nullptr;
-
-	// ESERCIZIO_BEGIN: membro del delegate
-	FLiftMoveRequestSignature MoveRequest;
-	// ESERCIZIO_END
 
 	bool RequestFloor(int32 TargetFloor);
 

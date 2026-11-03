@@ -69,13 +69,6 @@ void ADelegateLiftConsole::BeginPlay()
 
     UpdateButtonVisuals(GroundButtonMesh.Get(), false);
     UpdateButtonVisuals(UpperButtonMesh.Get(), false);
-
-    // ESERCIZIO_BEGIN: binding nativo
-    if (IsValid(Lift))
-    {
-        MoveRequest.BindUObject(Lift.Get(), &ADelegateLift::CanMoveToFloor);
-    }
-    // ESERCIZIO_END
 }
 
 // Called every frame
@@ -137,13 +130,6 @@ bool ADelegateLiftConsole::RequestFloor(int32 TargetFloor)
 
     bool bCanMove = false;
 
-    // ESERCIZIO_BEGIN: esecuzione e valore di ritorno
-    if (MoveRequest.IsBound())
-    {
-        bCanMove = MoveRequest.Execute(TargetFloor);
-    }
-    // ESERCIZIO_END
-
     if (bCanMove)
     {
         Lift->MoveToFloor(TargetFloor);
@@ -155,9 +141,5 @@ bool ADelegateLiftConsole::RequestFloor(int32 TargetFloor)
 ////////////////////////////////////////////////////////////////////////////////////////
 void ADelegateLiftConsole::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-    // ESERCIZIO_BEGIN: rimozione binding nativo
-    MoveRequest.Unbind();
-    // ESERCIZIO_END
-
     Super::EndPlay(EndPlayReason);
 }
