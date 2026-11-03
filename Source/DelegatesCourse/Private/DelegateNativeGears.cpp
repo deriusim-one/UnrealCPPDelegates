@@ -37,14 +37,6 @@ void ADelegateNativeGears::BeginPlay()
 	Super::BeginPlay();
 
     SetGearsState(false);
-
-    if (IsValid(PressurePlate))
-    {
-        // ESERCIZIO_BEGIN: binding nativo
-        StateChangedHandle = PressurePlate->OnStateChanged.AddUObject(this, &ADelegateNativeGears::SetGearsState);
-        // ESERCIZIO_END
-    }
-	
 }
 
 // Called every frame
@@ -66,13 +58,6 @@ void ADelegateNativeGears::Tick(float DeltaTime)
 
 void ADelegateNativeGears::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-    if (IsValid(PressurePlate) && StateChangedHandle.IsValid())
-    {
-        // ESERCIZIO_BEGIN: rimozione binding nativo
-        PressurePlate->OnStateChanged.Remove(StateChangedHandle);
-        // ESERCIZIO_END
-    }
-
     StateChangedHandle.Reset();
 
     Super::EndPlay(EndPlayReason);
