@@ -37,14 +37,6 @@ ADelegateGears::ADelegateGears()
 void ADelegateGears::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ESERCIZIO_BEGIN: binding
-	if (IsValid(PressurePlate))
-	{
-		PressurePlate->OnActivated.AddDynamic(this, &ADelegateGears::StartGears);
-		PressurePlate->OnDeactivated.AddDynamic(this, &ADelegateGears::StopGears);
-	}
-	// ESERCIZIO_END	
 }
 
 // Called every frame
@@ -68,14 +60,6 @@ void ADelegateGears::Tick(float DeltaTime)
 void ADelegateGears::EndPlay(
 	const EEndPlayReason::Type EndPlayReason)
 {
-	// ESERCIZIO_BEGIN: rimozione binding
-	if (IsValid(PressurePlate))
-	{
-		PressurePlate->OnActivated.RemoveDynamic(this, &ADelegateGears::StartGears);
-		PressurePlate->OnDeactivated.RemoveDynamic(this, &ADelegateGears::StopGears);
-	}
-	// ESERCIZIO_END
-
 	Super::EndPlay(EndPlayReason);
 }
 

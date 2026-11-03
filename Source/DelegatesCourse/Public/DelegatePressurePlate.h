@@ -11,9 +11,6 @@ class UBoxComponent;
 class UStaticMeshComponent;
 class UPrimitiveComponent;
 
-// ESERCIZIO_BEGIN: signature
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDelegatePlateEventSignature);
-// ESERCIZIO_END
 
 UCLASS()
 class DELEGATESCOURSE_API ADelegatePressurePlate : public AActor
@@ -23,14 +20,6 @@ class DELEGATESCOURSE_API ADelegatePressurePlate : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ADelegatePressurePlate();
-
-	// ESERCIZIO_BEGIN: proprietà dei delegate
-	UPROPERTY(BlueprintAssignable, Category = "PressurePlate|Events")
-	FDelegatePlateEventSignature OnActivated;
-
-	UPROPERTY(BlueprintAssignable, Category = "PressurePlate|Events")
-	FDelegatePlateEventSignature OnDeactivated;
-	// ESERCIZIO_END
 
 protected:
 	// Called when the game starts or when spawned

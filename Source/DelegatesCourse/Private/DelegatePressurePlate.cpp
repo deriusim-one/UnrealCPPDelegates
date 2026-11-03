@@ -64,10 +64,6 @@ void ADelegatePressurePlate::HandleBeginOverlap(UPrimitiveComponent* OverlappedC
 
     bIsPressed = true;
     UpdatePlateVisuals(true);
-
-    // ESERCIZIO_BEGIN: broadcast attivazione
-    OnActivated.Broadcast();
-    // ESERCIZIO_END
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -82,8 +78,4 @@ void ADelegatePressurePlate::HandleEndOverlap(UPrimitiveComponent* OverlappedCom
 
     bIsPressed = false;
     UpdatePlateVisuals(false);
-
-    // ESERCIZIO_BEGIN: broadcast disattivazione
-    OnDeactivated.Broadcast();
-    // ESERCIZIO_END
 }
