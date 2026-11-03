@@ -37,11 +37,6 @@ protected:
 
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
-	// ESERCIZIO_BEGIN: membro del delegate
-	UPROPERTY(Transient)
-	FChargeOperationCompletedSignature CompletionCallback;
-	// ESERCIZIO_END
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<USceneComponent> SceneRoot;
 

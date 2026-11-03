@@ -52,10 +52,6 @@ void ADelegateChargingStation::EndPlay(const EEndPlayReason::Type EndPlayReason)
     bOperationInProgress = false;
     SetActorTickEnabled(false);
 
-    // ESERCIZIO_BEGIN: rimozione della callback
-    CompletionCallback.Unbind();
-    // ESERCIZIO_END
-
     Super::EndPlay(EndPlayReason);
 }
 
@@ -124,10 +120,6 @@ void ADelegateChargingStation::StartOperation(float TargetCharge, float Duration
     OperationElapsedTime = 0.0f;
     OperationDuration = FMath::Max(Duration, 0.1f);
 
-    // ESERCIZIO_BEGIN: memorizzazione della callback
-    CompletionCallback = OnCompleted;
-    // ESERCIZIO_END
-
     bOperationInProgress = true;
 
     bWaitingForBatteryMovement = OperationTargetCharge >= 1.0f && bBatteryAtLight;
@@ -148,14 +140,6 @@ void ADelegateChargingStation::FinishOperation()
 {
     bOperationInProgress = false;
     SetActorTickEnabled(false);
-
-    // ESERCIZIO_BEGIN: esecuzione della callback
-    const FChargeOperationCompletedSignature CompletedCallback = CompletionCallback;
-
-    CompletionCallback.Unbind();
-
-    CompletedCallback.ExecuteIfBound();
-    // ESERCIZIO_END
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
