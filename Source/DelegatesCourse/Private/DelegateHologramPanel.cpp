@@ -169,8 +169,4 @@ void ADelegateHologramPanel::NotifyHologramChanged()
     {
         return;
     }
-
-    // ESERCIZIO_BEGIN: broadcast
-    OnHologramChanged.Broadcast(SelectedMesh, GetCurrentColor());
-    // ESERCIZIO_END
 }

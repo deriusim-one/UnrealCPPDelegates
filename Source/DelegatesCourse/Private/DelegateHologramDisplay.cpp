@@ -28,25 +28,10 @@ ADelegateHologramDisplay::ADelegateHologramDisplay()
 void ADelegateHologramDisplay::BeginPlay()
 {
 	Super::BeginPlay();
-
-    if (IsValid(HologramPanel))
-    {
-        // ESERCIZIO_BEGIN: binding C++
-        HologramPanel->OnHologramChanged.AddDynamic(this, &ADelegateHologramDisplay::ApplyHologramSettings);
-        // ESERCIZIO_END
-    }
-	
 }
 
 void ADelegateHologramDisplay::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-    if (IsValid(HologramPanel))
-    {
-        // ESERCIZIO_BEGIN: rimozione binding C++
-        HologramPanel->OnHologramChanged.RemoveDynamic(this, &ADelegateHologramDisplay::ApplyHologramSettings);
-        // ESERCIZIO_END
-    }
-
     Super::EndPlay(EndPlayReason);
 }
 

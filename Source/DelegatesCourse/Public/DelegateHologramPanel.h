@@ -12,10 +12,6 @@ class USceneComponent;
 class UStaticMesh;
 class UStaticMeshComponent;
 
-// ESERCIZIO_BEGIN: signature
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FHologramChangedSignature, UStaticMesh*, NewMesh, FLinearColor, NewColor);
-// ESERCIZIO_END
-
 
 UCLASS()
 class DELEGATESCOURSE_API ADelegateHologramPanel : public AActor
@@ -25,11 +21,6 @@ class DELEGATESCOURSE_API ADelegateHologramPanel : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ADelegateHologramPanel();
-
-	// ESERCIZIO_BEGIN: proprieta del delegate
-	UPROPERTY(BlueprintAssignable, Category = "Hologram|Events")
-	FHologramChangedSignature OnHologramChanged;
-	// ESERCIZIO_END
 
 	UFUNCTION(BlueprintCallable, Category = "Hologram")
 	void NextShape();
